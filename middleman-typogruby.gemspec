@@ -2,10 +2,10 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name          = "middleman-typogruby"
-  s.version       = "0.0.1"
-  s.platform      = Gem::Platform::RUBY
-  s.authors     = "Sebastien Serre"
+  s.name        = "middleman-typogruby"
+  s.version     = "0.0.1"
+  s.platform    = Gem::Platform::RUBY
+  s.authors     = ["Sebastien Serre"]
   s.email       = "sserre@msha.fr"
   s.homepage    = "https://github.com/ssbx/middleman-typogruby"
   s.summary     = "Middleman extension for typogruby"
