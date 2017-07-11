@@ -1,6 +1,6 @@
 require "middleman-core"
 
-Middleman::Extensions.register :middleman-typogruby do
-  require "my-extension/extension"
-  MyExtension
+::Middleman::Extensions.register(:typogruby) do
+  require "middleman-typogruby/extension"
+  ::Middleman::Typogruby
 end

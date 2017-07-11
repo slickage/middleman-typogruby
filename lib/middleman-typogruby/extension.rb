@@ -3,29 +3,22 @@ require 'middleman-core'
 
 # Extension namespace
 class MyExtension < ::Middleman::Extension
-  option :my_option, 'default', 'An example option'
 
   def initialize(app, options_hash={}, &block)
-    # Call super to build options from the options_hash
     super
-
-    # Require libraries only when activated
-    # require 'necessary/library'
-
-    # set up your extension
-    # puts options.my_option
+    require 'typogruby'
   end
 
-  def after_configuration
-    # Do something
+  def after_build(builder)
+      rootPath = app.root
+      buildDir = app.config[:build_dir]
+      htmlDir = buildDir + File::SEPARATOR + '**' + File::SEPARATOR + '*.html'
+
+      Dir.glob(htmlDir) do |file|
+          assetPath = rootPath + File::SEPARATOR + file
+          file.slice! buildDir + File::SEPARATOR
+          typoContent = Typogruby.improve(File.read(file))
+          File.open(file, typoContent, 'w')
+      end
   end
-
-  # A Sitemap Manipulator
-  # def manipulate_resource_list(resources)
-  # end
-
-  # helpers do
-  #   def a_helper
-  #   end
-  # end
 end

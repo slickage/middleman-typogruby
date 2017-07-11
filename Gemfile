@@ -16,3 +16,5 @@ group :test do
   gem 'aruba'
   gem 'rspec'
 end
+
+gem 'typogruby'
