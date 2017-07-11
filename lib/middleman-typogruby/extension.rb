@@ -2,7 +2,7 @@
 require 'middleman-core'
 
 # Extension namespace
-class MyExtension < ::Middleman::Extension
+class MiddlemanTypogruby < ::Middleman::Extension
 
   def initialize(app, options_hash={}, &block)
     super
@@ -17,8 +17,13 @@ class MyExtension < ::Middleman::Extension
       Dir.glob(htmlDir) do |file|
           assetPath = rootPath + File::SEPARATOR + file
           file.slice! buildDir + File::SEPARATOR
-          typoContent = Typogruby.improve(File.read(file))
-          File.open(file, typoContent, 'w')
+          puts "Typogruby build: " + file
+          typoContent = Typogruby.improve(File.read(assetPath))
+          f = File.open(assetPath, 'w')
+          f.write(typoContent)
+          f.close()
       end
   end
 end
+
+::Middleman::Extensions.register(:typogruby, MiddlemanTypogruby)
