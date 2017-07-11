@@ -10,3 +10,4 @@ And this to your config.rb:
 ```rb
 activate :typogruby,amp:true,caps:true,entities:true,initial_quotes:true,smartypants:true,widont:true
 ```
+See [Typogruby doc](http://avdgaag.github.io/typogruby/docs/Typogruby.html) for documentation.
