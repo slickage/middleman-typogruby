@@ -8,5 +8,12 @@ gem 'middleman-typogruby', :git => "git://github.com/ssbx/middleman-typogruby.gi
 
 And this to your config.rb:
 ```rb
-activate :typogruby
+activate :typogruby do |f|
+    f.amp = true
+    f.caps = true
+    f.entities = true
+    f.initial_quotes = true
+    f.smartypants = true
+    f.widont = true
+end
 ```
