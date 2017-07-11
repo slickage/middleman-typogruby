@@ -5,11 +5,11 @@ Gem::Specification.new do |s|
   s.name          = "middleman-typogruby"
   s.version       = "0.0.1"
   s.platform      = Gem::Platform::RUBY
-  gem.authors     = "Sebastien Serre"
-  gem.email       = "sserre@msha.fr"
-  gem.homepage    = "https://github.com/ssbx/middleman-typogruby"
-  gem.summary     = "Middleman extension for typogruby"
-  gem.description = "Middleman extension for typogruby"
+  s.authors     = "Sebastien Serre"
+  s.email       = "sserre@msha.fr"
+  s.homepage    = "https://github.com/ssbx/middleman-typogruby"
+  s.summary     = "Middleman extension for typogruby"
+  s.description = "Middleman extension for typogruby"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
