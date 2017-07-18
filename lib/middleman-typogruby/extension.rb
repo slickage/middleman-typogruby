@@ -4,9 +4,9 @@ require 'middleman-core'
 # Extension namespace
 class MiddlemanTypogruby < ::Middleman::Extension
 
+  option :entities, false, 'Converts special characters (excluding HTML tags) to HTML entities.'
   option :amp, true, 'converts a & surrounded by optional whitespace or a non-breaking space to the HTML entity and surrounds it in a span with a styled class.'
   option :caps, true, 'surrounds two or more consecutive captial letters, perhaps with interspersed digits and periods in a span with a styled class.'
-  option :entities, true, 'Converts special characters (excluding HTML tags) to HTML entities.'
   option :initial_quotes, true, 'encloses initial single or double quote, or their entities (optionally preceeded by a block element and perhaps an inline element) with a span that can be styled.
   '
   option :smartypants, true, 'Applies smartypants to a given piece of text.'
