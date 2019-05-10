@@ -12,9 +12,13 @@ class MiddlemanTypogruby < ::Middleman::Extension
   option :smartypants, true, 'Applies smartypants to a given piece of text.'
   option :widont, true, 'replaces space(s) before the last word (or tag before the last word) before an optional closing element (a, em, span, strong) before a closing tag (p, h[1-6], li, dt, dd) or the end of the string.'
 
+  option :nbsp, "\u00A0", "String to use between the last two words"
+  option :tags, %w[p li h1 h2 h3 h4 h5 h6], "Tags to apply widont"
+
   def initialize(app, options_hash={}, &block)
     super
     require 'typogruby'
+    require 'nokogiri'
   end
 
   def after_build(builder)
@@ -44,7 +48,18 @@ class MiddlemanTypogruby < ::Middleman::Extension
             bodytext = Typogruby.smartypants(bodytext)
           end
           if options.widont
-            bodytext = Typogruby.widont(bodytext)
+            html_doc = Nokogiri::HTML(File.open(assetPath))
+
+            html_doc.css(options.tags.join(", ")).each do |tag|
+              content = tag.inner_html.strip
+
+              widont = Typogruby.widont(content)
+              widont.gsub! '&nbsp;', options.nbsp # nokogiri seems to get rid of &nbsp;
+
+              tag.inner_html = widont
+            end
+
+            bodytext = html_doc.to_html
           end
 
           f = File.open(assetPath, 'w')

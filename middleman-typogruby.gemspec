@@ -15,11 +15,12 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
-  
+
   # The version of middleman-core your extension depends on
   s.add_runtime_dependency("middleman-core", [">= 4.2.1"])
-  
+
   # Additional dependencies
   s.add_runtime_dependency("typogruby", "~> 1.0.18")
+  s.add_runtime_dependency("nokogiri", "~> 1.6.7.2")
 end
 
