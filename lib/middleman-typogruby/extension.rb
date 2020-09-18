@@ -52,6 +52,8 @@ class MiddlemanTypogruby < ::Middleman::Extension
 
             html_doc.css(options.tags.join(", ")).each do |tag|
               content = tag.inner_html.strip
+              # if content is on multiple lines join it with a space
+              content.gsub!(/\s*\n+\s*/, ' ')
 
               widont = Typogruby.widont(content)
               widont.gsub! '&nbsp;', options.nbsp # nokogiri seems to get rid of &nbsp;
